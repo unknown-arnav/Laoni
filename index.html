@@ -45,13 +45,14 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden; width:100%}
+  main{overflow-x:hidden; width:100%}
   a{color:inherit;text-decoration:none}
-  svg{display:block}
+  svg{display:block; max-width: 100%; height: auto;}
   ::selection{background:var(--violet-3);color:#fff}
   :focus-visible{outline:2px solid var(--violet-2);outline-offset:3px;border-radius:4px}
-  /* Uniform margin through .wrap */
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%}
+  /* Updated .wrap for mobile containment */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%; box-sizing:border-box}
   .serif{font-family:'Playfair Display',serif}
   .mono{font-family:'JetBrains Mono',monospace}
   .skip-link{position:absolute;left:-999px;top:0;background:var(--violet-3);color:#fff;padding:10px 16px;border-radius:6px;z-index:200}
@@ -63,7 +64,8 @@
   .btn-primary:hover{background:var(--violet-2);border-color:var(--violet-2)}
   .btn-line{background:transparent;color:var(--text);border-color:var(--line-2)}
   .btn-line:hover{border-color:var(--violet-2);color:#fff}
-  .btn-survey{background:transparent;color:var(--mint);border-color:rgba(52,211,153,.4)}
+  /* Buttons that wrap on small screens */
+  .btn-survey{background:transparent;color:var(--mint);border-color:rgba(52,211,153,.4); white-space: normal; height: auto; text-align: center; max-width: 100%;}
   .btn-survey:hover{background:rgba(52,211,153,.1)}
   nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(10,8,16,.6);border-bottom:1px solid transparent;transition:border-color .3s,background .3s;overflow:hidden}
   nav.scrolled{border-bottom:1px solid var(--line);background:rgba(10,8,16,.9)}
@@ -89,7 +91,7 @@
   p.body{font-size:16.5px;color:var(--muted);max-width:660px;margin-bottom:16px}
   p.body strong{color:var(--lavender);font-weight:500}
   .hero{padding:150px 0 96px;border-top:0;position:relative;overflow:hidden}
-  .hero-faint{position:absolute;top:-160px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 65%);pointer-events:none;filter:blur(8px)}
+  .hero-faint{position:absolute;top:-160px;right:-120px;width:100%; max-width: 560px; aspect-ratio: 1/1; border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 65%);pointer-events:none;filter:blur(8px)}
   .hero .wrap{position:relative;z-index:2}
   .hero h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(36px,6.4vw,68px);line-height:1.06;letter-spacing:-.015em;max-width:15ch;margin-bottom:30px;text-align:left}
   .hero h1 em{font-style:italic;color:var(--lavender)}
@@ -169,14 +171,16 @@
   .letter p.lead{font-family:'Playfair Display',serif;font-size:21px;color:var(--lavender);line-height:1.5;font-style:italic}
   .letter .sign{margin-top:26px;font-family:'Playfair Display',serif;font-size:19px}
   .letter .role{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:2px}
-  .survey-grid{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;text-align:left}
+  .survey-grid{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;text-align:left; max-width: 100%;}
+  .survey-copy{text-align:left; max-width: 100%;}
   .survey-copy .l{font-size:17px;margin-bottom:8px}
   .survey-copy .kn{font-size:14px;color:var(--muted);margin-bottom:22px}
-  .qr-card{background:#fff;border-radius:14px;padding:16px 16px 12px;text-align:center;box-shadow:0 8px 30px -12px rgba(0,0,0,.5)}
-  .qr-img{width:170px;height:170px;line-height:0}
+  .qr-card{background:#fff;border-radius:14px;padding:16px 16px 12px;text-align:center;box-shadow:0 8px 30px -12px rgba(0,0,0,.5); width: fit-content;}
+  .qr-img{width:100%; max-width:170px; margin: 0 auto; line-height:0}
+  .qr-img svg{width: 100%; height: auto;}
   .qr-cap{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A0810}
   .qr-cap span{color:#7C3AED}
-  .survey-band{border:1px solid rgba(52,211,153,.3);border-radius:14px;padding:34px;background:linear-gradient(180deg,rgba(52,211,153,.05),var(--panel));text-align:left;max-width:720px;margin-left:0}
+  .survey-band{border:1px solid rgba(52,211,153,.3);border-radius:14px;padding:34px;background:linear-gradient(180deg,rgba(52,211,153,.05),var(--panel));text-align:left;max-width:720px;margin-left:0; box-sizing: border-box;}
   .signup{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .form-card{border:1px solid var(--line);border-radius:14px;padding:30px;background:var(--panel)}
   .form-card.merchant{border-color:var(--line-2);background:linear-gradient(180deg,rgba(124,58,237,.06),var(--panel))}
@@ -213,9 +217,9 @@
   footer{border-top:1px solid var(--line);padding:56px 0 38px}
   .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;margin-bottom:40px}
   .foot-brand .nm{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;margin-bottom:10px}
-  .foot-brand p{color:var(--muted);font-size:13.5px;max-width:280px;margin-bottom:18px}
+  .foot-brand p{color:var(--muted);font-size:13.5px;max-width:100%; margin-bottom:18px}
   .foot-col h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:15px}
-  .foot-col a{display:block;color:var(--muted);font-size:13.5px;margin-bottom:10px;transition:color .2s}
+  .foot-col a{display:block;color:var(--muted);font-size:13.5px;margin-bottom:10px;transition:color .2s; max-width: 100%;}
   .foot-col a:hover{color:var(--text)}
   .foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted-2);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em}
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
@@ -236,19 +240,23 @@
     .verdict .a{border-right:0;border-bottom:1px solid var(--line)}
     .sec{padding:74px 0}
     .hero{padding:122px 0 70px}
-    .foot-top{grid-template-columns:1fr 1fr}
+    /* Fixed Footer layout on mobile */
+    .foot-top{grid-template-columns: 1fr; gap: 40px;}
+    .foot-bottom{flex-direction: column; text-align: center; gap: 12px; align-items: center;}
     .cols{gap:34px}
-    .survey-grid{grid-template-columns:1fr;justify-items:flex-start;text-align:left}
-    .survey-copy{text-align:left}
-    .survey-band{margin-left:0}
+    /* Survey grid centered on mobile */
+    .survey-grid{display: flex; flex-direction: column; align-items: center; text-align: left; gap: 34px;}
+    .survey-copy{text-align:left; width: 100%;}
+    .qr-card{margin: 20px auto; flex-shrink: 0;}
+    .survey-band{margin-left:0; width: 100%; padding: 24px;}
   }
   @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav id="nav">
-<div class="wrap nav-inner overflow-x-hidden">
+<div class="wrap nav-inner">
 <button aria-expanded="false" aria-label="Open menu" class="menu-btn" id="menuBtn" style="margin-right: 0; margin-left: -8px; order: -1;">☰</button><a class="brand" href="#top">
 <span class="nm serif">Deserta Lab</span>
 <span class="tg">Commerce Intelligence Infrastructure</span>
@@ -539,7 +547,9 @@
 <a class="btn btn-survey js-survey" href="https://forms.gle/th58Es9KVxAWAVJg7" rel="noopener" target="_blank">Take the merchant survey · ಸಮೀಕ್ಷೆಯಲ್ಲಿ ಭಾಗವಹಿಸಿ →</a>
 </div>
 <div class="qr-card">
-<div class="qr-img"><svg aria-label="QR code to open the LAONI merchant survey" class="segno" height="170" role="img" viewbox="0 0 41 41" width="170" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h41v41h-41z" fill="#fff"></path><path class="qrline" d="M2 2.5h7m1 0h1m1 0h2m3 0h2m2 0h4m4 0h1m2 0h7m-37 1h1m5 0h1m5 0h3m3 0h2m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m3 0h4m3 0h1m2 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h2m1 0h2m3 0h1m1 0h3m3 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m6 0h2m1 0h3m2 0h1m2 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h3m2 0h3m2 0h1m1 0h4m1 0h3m1 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-27 1h3m3 0h2m1 0h2m1 0h3m3 0h1m-27 1h1m1 0h3m1 0h4m1 0h4m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m3 0h1m2 0h1m-37 1h1m1 0h2m4 0h2m1 0h1m2 0h1m4 0h2m2 0h2m2 0h1m1 0h1m2 0h1m2 0h1m-34 1h1m1 0h1m1 0h1m2 0h2m1 0h4m4 0h3m2 0h1m4 0h1m2 0h1m1 0h2m-36 1h1m1 0h1m4 0h1m2 0h1m3 0h6m1 0h1m1 0h4m1 0h1m2 0h2m1 0h1m-35 1h2m1 0h3m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m2 0h3m1 0h2m-34 1h3m2 0h1m1 0h1m3 0h3m2 0h1m1 0h4m2 0h2m1 0h2m1 0h1m2 0h4m-37 1h2m2 0h1m1 0h3m2 0h5m3 0h2m7 0h5m1 0h3m-36 1h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h2m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h3m2 0h2m-37 1h1m1 0h1m3 0h1m1 0h1m1 0h2m2 0h2m3 0h1m1 0h1m3 0h1m1 0h4m2 0h1m2 0h1m-36 1h1m1 0h2m3 0h3m1 0h4m1 0h1m1 0h1m1 0h2m1 0h2m3 0h2m3 0h3m-35 1h1m3 0h1m3 0h1m1 0h1m1 0h3m1 0h1m1 0h1m4 0h1m7 0h4m-37 1h1m1 0h1m1 0h1m2 0h6m2 0h3m3 0h1m1 0h1m1 0h4m1 0h1m1 0h1m3 0h1m-36 1h1m2 0h1m1 0h1m1 0h2m4 0h2m2 0h1m1 0h5m3 0h4m1 0h1m2 0h1m-37 1h2m1 0h1m1 0h1m1 0h1m3 0h6m1 0h1m2 0h3m1 0h1m9 0h2m-37 1h1m2 0h1m1 0h7m2 0h1m2 0h1m5 0h2m1 0h1m1 0h1m1 0h1m1 0h5m-37 1h1m1 0h3m2 0h1m1 0h1m2 0h1m2 0h3m1 0h5m1 0h2m8 0h2m-37 1h3m2 0h2m2 0h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h1m1 0h2m-32 1h1m1 0h2m1 0h2m1 0h2m2 0h1m1 0h6m1 0h1m1 0h4m2 0h1m4 0h1m-37 1h1m1 0h1m3 0h3m2 0h2m1 0h1m2 0h2m1 0h3m2 0h1m1 0h2m1 0h1m1 0h2m2 0h1m-36 1h4m4 0h1m2 0h1m1 0h1m1 0h4m3 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-34 1h1m5 0h1m1 0h1m4 0h3m5 0h1m2 0h2m1 0h6m1 0h3m-29 1h2m1 0h1m6 0h1m3 0h3m3 0h1m3 0h1m3 0h1m-37 1h7m2 0h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h3m-37 1h1m5 0h1m1 0h1m2 0h1m2 0h1m2 0h4m3 0h2m2 0h1m3 0h1m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h3m3 0h1m2 0h1m1 0h3m1 0h6m1 0h1m-36 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h4m2 0h1m1 0h1m1 0h7m2 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h3m2 0h5m2 0h1m2 0h2m1 0h4m2 0h2m2 0h1m-37 1h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1" stroke="#0a0810"></path></svg></div>
+<div class="qr-img">
+<svg aria-label="QR code to open the LAONI merchant survey" class="segno" height="170" role="img" viewbox="0 0 41 41" width="170" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h41v41h-41z" fill="#fff"></path><path class="qrline" d="M2 2.5h7m1 0h1m1 0h2m3 0h2m2 0h4m4 0h1m2 0h7m-37 1h1m5 0h1m5 0h3m3 0h2m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m3 0h4m3 0h1m2 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h2m1 0h2m3 0h1m1 0h3m3 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m6 0h2m1 0h3m2 0h1m2 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h3m2 0h3m2 0h1m1 0h4m1 0h3m1 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-27 1h3m3 0h2m1 0h2m1 0h3m3 0h1m-27 1h1m1 0h3m1 0h4m1 0h4m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m3 0h1m2 0h1m-37 1h1m1 0h2m4 0h2m1 0h1m2 0h1m4 0h2m2 0h2m2 0h1m1 0h1m2 0h1m2 0h1m-34 1h1m1 0h1m1 0h1m2 0h2m1 0h4m4 0h3m2 0h1m4 0h1m2 0h1m1 0h2m-36 1h1m1 0h1m4 0h1m2 0h1m3 0h6m1 0h1m1 0h4m1 0h1m2 0h2m1 0h1m-35 1h2m1 0h3m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h3m2 0h3m1 0h2m-34 1h3m2 0h1m1 0h1m3 0h3m2 0h1m1 0h4m2 0h2m1 0h2m1 0h1m2 0h4m-37 1h2m2 0h1m1 0h3m2 0h5m3 0h2m7 0h5m1 0h3m-36 1h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h2m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h3m2 0h2m-37 1h1m1 0h1m3 0h1m1 0h1m1 0h2m2 0h2m3 0h1m1 0h1m3 0h1m1 0h4m2 0h1m2 0h1m-36 1h1m1 0h2m3 0h3m1 0h4m1 0h1m1 0h1m1 0h2m1 0h2m3 0h2m3 0h3m-35 1h1m3 0h1m3 0h1m1 0h1m1 0h3m1 0h1m1 0h1m4 0h1m7 0h4m-37 1h1m1 0h1m1 0h1m2 0h6m2 0h3m3 0h1m1 0h1m1 0h4m1 0h1m1 0h1m3 0h1m-36 1h1m2 0h1m1 0h1m1 0h2m4 0h2m2 0h1m1 0h5m3 0h4m1 0h1m2 0h1m-37 1h2m1 0h1m1 0h1m1 0h1m3 0h6m1 0h1m2 0h3m1 0h1m9 0h2m-37 1h1m2 0h1m1 0h7m2 0h1m2 0h1m5 0h2m1 0h1m1 0h1m1 0h1m1 0h5m-37 1h1m1 0h3m2 0h1m1 0h1m2 0h1m2 0h3m1 0h5m1 0h2m8 0h2m-37 1h3m2 0h2m2 0h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h1m1 0h2m-32 1h1m1 0h2m1 0h2m1 0h2m2 0h1m1 0h6m1 0h1m1 0h4m2 0h1m4 0h1m-37 1h1m1 0h1m3 0h3m2 0h2m1 0h1m2 0h2m1 0h3m2 0h1m1 0h2m1 0h1m1 0h2m2 0h1m-36 1h4m4 0h1m2 0h1m1 0h1m1 0h4m3 0h1m1 0h1m2 0h1m1 0h2m1 0h1m-34 1h1m5 0h1m1 0h1m4 0h3m5 0h1m2 0h2m1 0h6m1 0h3m-29 1h2m1 0h1m6 0h1m3 0h3m3 0h1m3 0h1m3 0h1m-37 1h7m2 0h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h3m-37 1h1m5 0h1m1 0h1m2 0h1m2 0h1m2 0h4m3 0h2m2 0h1m3 0h1m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h3m3 0h1m2 0h1m1 0h3m1 0h6m1 0h1m-36 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h4m2 0h1m1 0h1m1 0h7m2 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h3m2 0h5m2 0h1m2 0h2m1 0h4m2 0h2m2 0h1m-37 1h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1" stroke="#0a0810"></path></svg>
+</div>
 <div class="qr-cap">Scan to open the survey<br/><span>ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</span></div>
 </div>
 </div>
